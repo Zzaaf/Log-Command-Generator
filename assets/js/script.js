@@ -1,15 +1,13 @@
-let dataFrom = document.getElementById('dataFrom'),
-    dataTo = document.getElementById('dataTo'),
+let dataFrom = document.getElementById('dateFrom'),
+    dataTo = document.getElementById('dateTo'),
+
+    timeFrom = document.getElementById('timeFrom'),
+    timeTo = document.getElementById('timeTo'),
+
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
+    clearCommand = document.getElementById('clearCommand')
     getCommand = document.getElementById('getCommand');
-    
-
-// getCommand.onclick = () => {
-//     let generate = `${dataFrom.value} ${dataTo.value}`;
-
-//     result.value = generate;
-// }
 
 copyCommand.addEventListener('click', () => {
   const inputValue = result.value.trim();
@@ -30,3 +28,15 @@ copyCommand.addEventListener('click', () => {
       })
   }
 });
+
+clearCommand.onclick = () => {
+  result.value = '';
+}
+
+getCommand.onclick = () => {
+  let generate = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;    
+
+  if (dataFrom.value != '' && dataTo.value != '') {
+    result.value = `history_log -P ${generate}`;
+  }    
+}

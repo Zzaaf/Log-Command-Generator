@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.0.1</p>
+            <p class="lead">v.0.0.2</p>
         </div>
 
     </div>
@@ -24,15 +24,72 @@
         <div class="row justify-content-between">
 
             <div class="col-6">
-                <div class="input-group mb-3">
-        
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            DataTime "От": <input id="dateFrom" type="date" aria-label="Checkbox for following text input">
+
+                <div class="row justify-content-between">
+
+                    <div class="col-6">
+
+                        <div class="input-group mb-3">
+                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    DataTime "От": <input id="dateFrom" type="date" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required>
+                                </div>
+                            </div>        
+                            
                         </div>
-                    </div>        
-                    
+
+                    </div>
+
+                    <div class="col-6">
+
+                        <div class="input-group mb-3">
+                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    Time "От": <input id="timeFrom" type="time" required>
+                                </div>
+                            </div>        
+                            
+                        </div>
+
+                    </div>
+
                 </div>
+            </div>
+
+            <div class="col-6">
+
+                <div class="row justify-content-between">
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+        
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    DataTime "До": <input id="dateTo" type="date" required>
+                                </div>
+                            </div>        
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+
+                        <div class="input-group mb-3">
+            
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    Time "До": <input id="timeTo" type="time" min="00:00" max="23:59" required>
+                                </div>
+                            </div>        
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                
             </div>
 
             <div class="col-6">
@@ -40,23 +97,11 @@
         
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            DataTime "До": <input id="dateTo" type="date" aria-label="Checkbox for following text input">
-                        </div>
-                    </div>        
-                    
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="input-group mb-3">
-        
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            Status: <input type="checkbox" aria-label="Checkbox for following text input">
+                            datetime: <input type="checkbox">
                         </div>
                     </div>
         
-                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    <input type="text" class="form-control">
                 </div>
             </div>
 
@@ -65,20 +110,21 @@
         
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            StatusNum: <input type="checkbox" aria-label="Checkbox for following text input">
+                            StatusNum: <input type="checkbox">
                         </div>
                     </div>
         
-                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    <input type="text" class="form-control">
                 </div>
             </div>
 
         </div>
 
         <div class="input-group">
-            <input id="result" type="text" class="form-control" placeholder="Место получения команды" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+            <input id="result" type="text" class="form-control" placeholder="Место получения команды" aria-describedby="button-addon4">
             <div class="input-group-append" id="button-addon4">
                 <button id="copyCommand" class="btn btn-outline-secondary" type="button">Скопировать</button>
+                <button id="clearCommand" class="btn btn-outline-danger" type="button">Очистить</button>
                 <button id="getCommand" class="btn btn-outline-success" type="button">Получить команду</button>
             </div>
         </div>
