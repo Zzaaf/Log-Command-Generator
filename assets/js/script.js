@@ -4,6 +4,12 @@ let dataFrom = document.getElementById('dateFrom'),
     timeFrom = document.getElementById('timeFrom'),
     timeTo = document.getElementById('timeTo'),
 
+    dateTime = document.getElementById('dateTime'),
+    dateTimeValue,    
+
+    ad = document.getElementById('ad'),
+    adVal = document.getElementById('adVal'),
+
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
     clearCommand = document.getElementById('clearCommand')
@@ -34,9 +40,20 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
-  let generate = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;    
+  let dateTimeRange = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;
+
+  // if (ad.checked == true && adVal.value != '') {
+  //   adVal.value = `ad=${adVal.value}`;
+  // }
+
+  if (dateTime.checked == true) {
+    dateTimeValue = 'datetime,';
+  } else {
+    dateTimeValue = '';
+  }
+
 
   if (dataFrom.value != '' && dataTo.value != '') {
-    result.value = `history_log -P ${generate}`;
+    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adVal.value}"`;
   }    
 }
