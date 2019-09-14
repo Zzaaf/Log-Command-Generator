@@ -1,5 +1,5 @@
 input[type="checkbox"], input[type="date"], input[type="time"] {
-    margin-left: 1rem;
+    margin-left: .5rem;
 }
 
 .jumbotron {

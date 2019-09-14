@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.0.3</p>
+            <p class="lead">v.0.0.4</p>
         </div>
 
     </div>
@@ -24,20 +24,20 @@
         <div class="row justify-content-between">
             <div class="col-6">
                 <div class="row justify-content-between">
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    DataTime "От": <input id="dateFrom" type="date" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required>
+                                <div class="input-group-text rounded-right">
+                                    DataTime "От": <input id="dateFrom" type="date" max="24:00" required>
                                 </div>
                             </div>                            
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
-                                <div class="input-group-text">
+                                <div class="input-group-text rounded-right">
                                     Time "От": <input id="timeFrom" type="time" required>
                                 </div>
                             </div>                            
@@ -48,20 +48,20 @@
 
             <div class="col-6">
                 <div class="row justify-content-between">
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="input-group mb-3">        
                             <div class="input-group-prepend">
-                                <div class="input-group-text">
+                                <div class="input-group-text rounded-right">
                                     DataTime "До": <input id="dateTo" type="date" required>
                                 </div>
                             </div>                            
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="input-group mb-3">            
                             <div class="input-group-prepend">
-                                <div class="input-group-text">
+                                <div class="input-group-text rounded-right">
                                     Time "До": <input id="timeTo" type="time" required>
                                 </div>
                             </div>                            
@@ -142,7 +142,7 @@
                                     statusnum: <input id="statusNum" type="checkbox">
                                 </div>
                             </div>                
-                            <input type="text" class="form-control">
+                            <input id="statusNumCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                     userid: <input id="userId" type="checkbox">
                                 </div>
                             </div>                
-                            <input type="text" class="form-control">
+                            <input id="userIdCont" type="text" class="form-control">
                         </div>
                     </div>
 
@@ -168,7 +168,7 @@
                                     userip: <input id="userIp" type="checkbox">
                                 </div>
                             </div>                
-                            <input type="text" class="form-control">
+                            <input id="userIpCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                                     agent: <input id="agent" type="checkbox">
                                 </div>
                             </div>                
-                            <input type="text" class="form-control">
+                            <input id="agentCont" type="text" class="form-control">
                         </div>
                     </div>
 
@@ -194,7 +194,7 @@
                                     referer: <input id="referer" type="checkbox">
                                 </div>
                             </div>                
-                            <input type="text" class="form-control">
+                            <input id="refererCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
