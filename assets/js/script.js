@@ -44,6 +44,15 @@ let dataFrom = document.getElementById('dateFrom'),
     refererCont = document.getElementById('refererCont'),
     refererValue,
 
+    byDefault = document.getElementById('byDefault'),
+    byDefaultValue,
+
+    toFile = document.getElementById('toFile'),
+    toFileValue,
+
+    toArchive = document.getElementById('toArchive'),
+    toArchiveValue,
+
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
     clearCommand = document.getElementById('clearCommand')
@@ -109,7 +118,7 @@ getCommand.onclick = () => {
   }
 
   if (typeNum.checked == true && typeNumCont.value != '') {
-    typeNumValue = `,typenum=${typeNumCont.value}`;
+    typeNumValue = `,typenum=${typeNumCont.value[0]}`;
   } else if (typeNum.checked == true) {
     typeNumValue = ',typenum';
   } else {
@@ -156,7 +165,25 @@ getCommand.onclick = () => {
     refererValue = '';
   }
 
+  if (byDefault.checked == true) {    
+    byDefaultValue = '';
+  }
+
+  if (toFile.checked == true && toArchive.checked != true) {
+    let fileName = prompt('Введите имя файла:', '');
+    toFileValue = ` > ${fileName}.csv`
+  } else {
+    toFileValue = '';
+  }
+
+  if (toFile.checked != true && toArchive.checked == true) {
+    let archiveName = prompt('Введите имя архива:', '');
+    toArchiveValue = ` | gzip > ${archiveName}.gz`
+  } else {
+    toArchiveValue = '';
+  }
+
   if (dataFrom.value != '' && dataTo.value != '') {
-    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adValue}${profileValue}${bannerValue}${typeNumValue}${statusNumValue}${userIdValue}${userIpValue}${agentValue}${refererValue}"`;
+    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adValue}${profileValue}${bannerValue}${typeNumValue}${statusNumValue}${userIdValue}${userIpValue}${agentValue}${refererValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   }    
 }

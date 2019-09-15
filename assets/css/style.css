@@ -5,3 +5,7 @@ input[type="checkbox"], input[type="date"], input[type="time"] {
 .jumbotron {
     padding: 1rem 1rem;
 }
+
+.btn-group-toggle{
+    width: 100%;
+}

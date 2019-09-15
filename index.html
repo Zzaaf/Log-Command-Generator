@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.0.4</p>
+            <p class="lead">v.0.0.5</p>
         </div>
 
     </div>
@@ -38,7 +38,7 @@
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text rounded-right">
-                                    Time "От": <input id="timeFrom" type="time" required>
+                                    Time "От": <input id="timeFrom" type="time" value="00:00" required>
                                 </div>
                             </div>                            
                         </div>
@@ -62,7 +62,7 @@
                         <div class="input-group mb-3">            
                             <div class="input-group-prepend">
                                 <div class="input-group-text rounded-right">
-                                    Time "До": <input id="timeTo" type="time" required>
+                                    Time "До": <input id="timeTo" type="time" value="23:59" required>
                                 </div>
                             </div>                            
                         </div>
@@ -130,8 +130,15 @@
                                 <div class="input-group-text">
                                     typenum: <input id="typeNum" type="checkbox">
                                 </div>
-                            </div>                
-                            <input id="typeNumCont" type="text" class="form-control">
+                            </div>
+                            <select id="typeNumCont" class="form-control">
+                                <option></option>
+                                <option>0 - exposure</option>
+                                <option>1 - click</option>
+                                <option>2 - subevent</option>
+                                <option>3 - bid</option>
+                                <option>4 - rtb feedback</option>                                
+                            </select>
                         </div>
                     </div>
 
@@ -200,14 +207,34 @@
                 </div>
             </div>
 
-            <div class="col">
-                <div class="form-group">                    
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Без шаблона</option>
-                        <option>Шаблон 1</option>
-                        <option>Шаблон 2</option>
-                        <option>Шаблон 3</option>
-                    </select>
+            <div class="col-6">
+                
+                <div class="row">
+
+                    <div class="col-8">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-light border active">
+                                <input type="radio" name="options" id="byDefault" autocomplete="off" checked> По умолчанию
+                            </label>
+                            <label class="btn btn-light border">
+                                <input type="radio" name="options" id="toFile" autocomplete="off"> В файл
+                            </label>
+                            <label class="btn btn-light border">
+                                <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">                    
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Без шаблона</option>
+                                <option>Шаблон 1</option>
+                                <option>Шаблон 2</option>
+                                <option>Шаблон 3</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -220,21 +247,11 @@
                 <button id="getCommand" class="btn btn-outline-success" type="button">Получить команду</button>
             </div>
         </div>
-
-        <!-- <div class="input-group">
-            <input type="text" class="form-control" aria-label="Text input with dropdown button">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Действия</button>
-                <div class="dropdown-menu">
-                    <a id="copyCommand" class="dropdown-item" href="#">Скопировать</a>
-                    <a id="clearCommand" class="dropdown-item" href="#">Очистить</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a id="getCommand" class="dropdown-item" href="#">Получить команду</a>                
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
