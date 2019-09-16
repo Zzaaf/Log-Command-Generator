@@ -97,12 +97,18 @@ getCommand.onclick = () => {
     alert('Введите корректую дату "От:"');
     dataFrom.classList.add('border', 'border-danger');
     return;
+  } else {
+    dataFrom.classList.remove('border-danger');
+    dataFrom.classList.add('border', 'border-secondary');
   }
 
   if (dataTo.value == '') {
     alert('Введите корректую дату "До:"');
     dataTo.classList.add('border', 'border-danger');
     return;
+  } else {
+    dataTo.classList.remove('border-danger');
+    dataTo.classList.add('border', 'border-secondary');
   }
 
   let dateTimeRange = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;
