@@ -24,6 +24,10 @@ let dataFrom = document.getElementById('dateFrom'),
     typeNumCont = document.getElementById('typeNumCont'),
     typeNumValue,
 
+    subTypeNum = document.getElementById('subTypeNum'),
+    subTypeNumCont = document.getElementById('subTypeNumCont'),
+    subTypeNumValue,
+
     statusNum = document.getElementById('statusNum'),
     statusNumCont = document.getElementById('statusNumCont'),
     statusNumValue,
@@ -44,14 +48,20 @@ let dataFrom = document.getElementById('dateFrom'),
     refererCont = document.getElementById('refererCont'),
     refererValue,
 
+    custom = document.getElementById('custom'),
+    customCont = document.getElementById('customCont'),
+    customValue,
+
     byDefault = document.getElementById('byDefault'),
     byDefaultValue,
 
     toFile = document.getElementById('toFile'),
     toFileValue,
+    fileName,
 
     toArchive = document.getElementById('toArchive'),
     toArchiveValue,
+    archiveName,
 
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
@@ -83,6 +93,18 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
+  if (dataFrom.value == '') {
+    alert('Введите корректую дату "От:"');
+    dataFrom.classList.add('border', 'border-danger');
+    return;
+  }
+
+  if (dataTo.value == '') {
+    alert('Введите корректую дату "До:"');
+    dataTo.classList.add('border', 'border-danger');
+    return;
+  }
+
   let dateTimeRange = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;
 
   if (dateTime.checked == true && dateTimeCont.value != '') {
@@ -125,6 +147,18 @@ getCommand.onclick = () => {
     typeNumValue = '';
   }
 
+  if (typeNumCont.value[0] == '2') {
+    subTypeNum.setAttribute('checked', '');
+  }
+
+  if (subTypeNum.checked == true && subTypeNumCont.value != '') {
+    subTypeNumValue = `,subtypenum=${subTypeNumCont.value}`;
+  } else if (subTypeNum.checked == true) {
+    subTypeNumValue = ',subtypenum';
+  } else {
+    subTypeNumValue = '';
+  }
+
   if (statusNum.checked == true && statusNumCont.value != '') {
     statusNumValue = `,statusnum=${statusNumCont.value}`;
   } else if (statusNum.checked == true) {
@@ -165,25 +199,49 @@ getCommand.onclick = () => {
     refererValue = '';
   }
 
+  if (custom.checked == true && customCont.value != '') {
+    customValue = `,custom=${customCont.value}`;
+  } else if (custom.checked == true) {
+    customValue = ',custom';
+  } else {
+    customValue = '';
+  }
+
   if (byDefault.checked == true) {    
+    byDefaultValue = '';
+  } else {
     byDefaultValue = '';
   }
 
   if (toFile.checked == true && toArchive.checked != true) {
-    let fileName = prompt('Введите имя файла:', '');
-    toFileValue = ` > ${fileName}.csv`
+    fileName = prompt('Введите имя файла:', '');
+
+    if (fileName == '') {
+      alert('Введите корректное имя файла');
+      return;
+    } else {
+      toFileValue = ` > ${fileName}.csv`;
+    }
+
   } else {
     toFileValue = '';
   }
 
   if (toFile.checked != true && toArchive.checked == true) {
-    let archiveName = prompt('Введите имя архива:', '');
-    toArchiveValue = ` | gzip > ${archiveName}.gz`
+    archiveName = prompt('Введите имя архива:', '');
+
+    if (archiveName == '') {
+      alert('Введите корректное имя архива');
+      return;
+    } else {
+      toArchiveValue = ` | gzip > ${archiveName}.gz`;
+    }
+    
   } else {
     toArchiveValue = '';
   }
 
   if (dataFrom.value != '' && dataTo.value != '') {
-    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adValue}${profileValue}${bannerValue}${typeNumValue}${statusNumValue}${userIdValue}${userIpValue}${agentValue}${refererValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
+    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adValue}${profileValue}${bannerValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   }    
 }

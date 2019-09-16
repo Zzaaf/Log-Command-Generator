@@ -10,35 +10,57 @@
 </head>
 <body>
     <div class="jumbotron jumbotron-fluid">
-
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.0.5</p>
+            <p class="lead">v.0.0.6</p>
         </div>
-
     </div>
 
     <div class="container">
+        <div class="row justify-content-between">            
+            <div class="col-12">                
+                <div class="form-group">                    
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Без шаблона</option>
+                        <option>Выгрузка для панели ОМИ</option>
+                        <option>Выгрузка для панели Tiburon</option>
+                        <option>Выгрузка для панели OnlineInterviewer ОИ</option>
+                    </select>
+                </div>
+            </div>
 
-        <div class="row justify-content-between">
-            <div class="col-6">
+            <div class="col-12">
+                <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+                    <label class="btn btn-light border">
+                        <input type="radio" name="options" id="byDefault" autocomplete="off"> По умолчанию
+                    </label>
+                    <label class="btn btn-light border active">
+                        <input type="radio" name="options" id="toFile" autocomplete="off" checked> В файл
+                    </label>
+                    <label class="btn btn-light border">
+                        <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-12">
                 <div class="row justify-content-between">
-                    <div class="col-7">
+                    <div class="col-6">
                         <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text rounded-right">
-                                    DataTime "От": <input id="dateFrom" type="date" max="24:00" required>
+                            <div class="input-group-prepend" style="width: 100%;">
+                                <div class="input-group-text rounded-right" style="width: 100%;">
+                                    Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
                                 </div>
                             </div>                            
                         </div>
                     </div>
 
-                    <div class="col-5">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text rounded-right">
-                                    Time "От": <input id="timeFrom" type="time" value="00:00" required>
+                    <div class="col-6">
+                        <div class="input-group mb-3">        
+                            <div class="input-group-prepend" style="width: 100%;">
+                                <div class="input-group-text rounded-right" style="width: 100%;">
+                                    Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
                                 </div>
                             </div>                            
                         </div>
@@ -46,23 +68,23 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-12">
                 <div class="row justify-content-between">
-                    <div class="col-7">
-                        <div class="input-group mb-3">        
-                            <div class="input-group-prepend">
-                                <div class="input-group-text rounded-right">
-                                    DataTime "До": <input id="dateTo" type="date" required>
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend" style="width: 100%;">
+                                <div class="input-group-text rounded-right" style="width: 100%;">
+                                    Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
                                 </div>
                             </div>                            
                         </div>
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="input-group mb-3">            
-                            <div class="input-group-prepend">
-                                <div class="input-group-text rounded-right">
-                                    Time "До": <input id="timeTo" type="time" value="23:59" required>
+                            <div class="input-group-prepend" style="width: 100%;">
+                                <div class="input-group-text rounded-right" style="width: 100%;">
+                                    Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
                                 </div>
                             </div>                            
                         </div>
@@ -71,12 +93,12 @@
             </div>
 
             <div class="col-6">
-                <div class="row">
+                <div class="row justify-content-between">
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    datetime: <input id="dateTime" type="checkbox">
+                                    datetime: <input id="dateTime" type="checkbox" checked>
                                 </div>
                             </div>                
                             <input id="dateTimeCont" type="text" class="form-control">
@@ -97,7 +119,7 @@
             </div>
 
             <div class="col-6">
-                <div class="row">
+                <div class="row justify-content-between">
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
@@ -123,12 +145,12 @@
             </div>
 
             <div class="col-6">
-                <div class="row">
+                <div class="row justify-content-between">
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    typenum: <input id="typeNum" type="checkbox">
+                                    typenum: <input id="typeNum" type="checkbox" checked>
                                 </div>
                             </div>
                             <select id="typeNumCont" class="form-control">
@@ -146,10 +168,10 @@
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    statusnum: <input id="statusNum" type="checkbox">
+                                    subtypenum: <input id="subTypeNum" type="checkbox">
                                 </div>
                             </div>                
-                            <input id="statusNumCont" type="text" class="form-control">
+                            <input id="subTypeNumCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -157,6 +179,17 @@
 
             <div class="col-6">
                 <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    statusnum: <input id="statusNum" type="checkbox">
+                                </div>
+                            </div>                
+                            <input id="statusNumCont" type="text" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
@@ -167,7 +200,11 @@
                             <input id="userIdCont" type="text" class="form-control">
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <div class="col-6">
+                <div class="row">
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
@@ -178,19 +215,30 @@
                             <input id="userIpCont" type="text" class="form-control">
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="col-6">
-                <div class="row">
                     <div class="col-6">
                         <div class="input-group mb-3">        
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    agent: <input id="agent" type="checkbox">
+                                    agent: <input id="agent" type="checkbox" checked>
                                 </div>
                             </div>                
                             <input id="agentCont" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">                
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    referer: <input id="referer" type="checkbox" checked>
+                                </div>
+                            </div>                
+                            <input id="refererCont" type="text" class="form-control">
                         </div>
                     </div>
 
@@ -198,53 +246,29 @@
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    referer: <input id="referer" type="checkbox">
+                                    custom: <input id="custom" type="checkbox">
                                 </div>
                             </div>                
-                            <input id="refererCont" type="text" class="form-control">
+                            <input id="customCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-6">
-                
-                <div class="row">
-
-                    <div class="col-8">
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-light border active">
-                                <input type="radio" name="options" id="byDefault" autocomplete="off" checked> По умолчанию
-                            </label>
-                            <label class="btn btn-light border">
-                                <input type="radio" name="options" id="toFile" autocomplete="off"> В файл
-                            </label>
-                            <label class="btn btn-light border">
-                                <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="form-group">                    
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Без шаблона</option>
-                                <option>Выгрузка для панели ОМИ</option>
-                                <option>Выгрузка для панели Tiburon</option>
-                                <option>Выгрузка для панели OnlineInterviewer ОИ</option>
-                            </select>
-                        </div>
-                    </div>
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <input id="result" type="text" class="form-control" placeholder="Место получения команды">
                 </div>
             </div>
-        </div>
 
-        <div class="input-group">
-            <input id="result" type="text" class="form-control" placeholder="Место получения команды">
-            <div class="input-group-append">
-                <button id="copyCommand" class="btn btn-outline-secondary" type="button">Скопировать</button>
-                <button id="clearCommand" class="btn btn-outline-danger" type="button">Очистить</button>
-                <button id="getCommand" class="btn btn-outline-success" type="button">Получить команду</button>
+            <div class="col-12">
+                <div class="input-group mb-3">            
+                    <div class="input-group-append" style="width: 100%;">
+                        <button id="copyCommand" class="btn btn-outline-secondary rounded-left" style="width: 100%;" type="button">Скопировать</button>
+                        <button id="clearCommand" class="btn btn-outline-danger" style="width: 100%;" type="button">Очистить</button>
+                        <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
