@@ -13,15 +13,20 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.0.6</p>
+            <p class="lead">v.0.0.7</p>
         </div>
     </div>
 
     <div class="container">
-        <div class="row justify-content-between">            
+        <div class="row justify-content-between">
+
+            <div class="col-12">
+                <h4>Вид выгрузки:</h4>
+            </div>
+                        
             <div class="col-12">                
                 <div class="form-group">                    
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="exampleFormControlSelect1" data-toggle="tooltip" data-placement="top" title="Выберете необходимый шаблон">
                         <option>Без шаблона</option>
                         <option>Выгрузка для панели ОМИ</option>
                         <option>Выгрузка для панели Tiburon</option>
@@ -42,6 +47,10 @@
                         <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
                     </label>
                 </div>
+            </div>
+
+            <div class="col-12">
+                <h4>Дата и время:</h4>
             </div>
 
             <div class="col-12">
@@ -92,16 +101,20 @@
                 </div>                
             </div>
 
+            <div class="col-12">
+                <h4>Фильтры:</h4>
+            </div>
+
             <div class="col-6">
                 <div class="row justify-content-between">
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    datetime: <input id="dateTime" type="checkbox" checked>
+                                    siteid: <input id="siteId" type="checkbox">
                                 </div>
                             </div>                
-                            <input id="dateTimeCont" type="text" class="form-control">
+                            <input id="siteIdCont" type="text" class="form-control">
                         </div>
                     </div>
 
@@ -113,6 +126,28 @@
                                 </div>
                             </div>                
                             <input id="adCont" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    bannernum: <input id="bannerNum" type="checkbox">
+                                </div>
+                            </div>                
+                            <input id="bannerNumCont" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    bannertype: <input id="bannerType" type="checkbox">
+                                </div>
+                            </div>                
+                            <input id="bannerTypeCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -141,11 +176,48 @@
                             <input id="bannerCont" type="text" class="form-control">
                         </div>
                     </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    userid: <input id="userId" type="checkbox">
+                                </div>
+                            </div>                
+                            <input id="userIdCont" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    slice: <input id="slice" type="checkbox">
+                                </div>
+                            </div>                
+                            <input id="sliceCont" type="text" class="form-control">
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="col-12">
+                <h4>Конфигурация:</h4>
             </div>
 
             <div class="col-6">
                 <div class="row justify-content-between">
+                    <div class="col-6">
+                        <div class="input-group mb-3">                
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    datetime: <input id="dateTime" type="checkbox" checked>
+                                </div>
+                            </div>                
+                            <input id="dateTimeCont" type="text" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="col-6">
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
@@ -161,17 +233,6 @@
                                 <option>3 - bid</option>
                                 <option>4 - rtb feedback</option>                                
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    subtypenum: <input id="subTypeNum" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="subTypeNumCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -194,10 +255,10 @@
                         <div class="input-group mb-3">                
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    userid: <input id="userId" type="checkbox">
+                                    subtypenum: <input id="subTypeNum" type="checkbox">
                                 </div>
                             </div>                
-                            <input id="userIdCont" type="text" class="form-control">
+                            <input id="subTypeNumCont" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -264,18 +325,18 @@
             <div class="col-12">
                 <div class="input-group mb-3">            
                     <div class="input-group-append" style="width: 100%;">
-                        <button id="copyCommand" class="btn btn-outline-secondary rounded-left" style="width: 100%;" type="button">Скопировать</button>
-                        <button id="clearCommand" class="btn btn-outline-danger" style="width: 100%;" type="button">Очистить</button>
+                        <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                        <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
                         <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="assets/js/script.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

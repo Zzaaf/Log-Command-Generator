@@ -8,6 +8,10 @@ let dataFrom = document.getElementById('dateFrom'),
     dateTimeCont = document.getElementById('dateTimeCont'),
     dateTimeValue,
 
+    siteId = document.getElementById('siteId'),
+    siteIdCont = document.getElementById('siteIdCont'),
+    siteIdValue,
+
     ad = document.getElementById('ad'),
     adCont = document.getElementById('adCont'),
     adValue,
@@ -19,6 +23,14 @@ let dataFrom = document.getElementById('dateFrom'),
     banner = document.getElementById('banner'),
     bannerCont = document.getElementById('bannerCont'),
     bannerValue,
+
+    bannerNum = document.getElementById('bannerNum'),
+    bannerNumCont = document.getElementById('bannerNumCont'),
+    bannerNumValue,
+
+    bannerType = document.getElementById('bannerType'),
+    bannerTypeCont = document.getElementById('bannerTypeCont'),
+    bannerTypeValue,
 
     typeNum = document.getElementById('typeNum'),
     typeNumCont = document.getElementById('typeNumCont'),
@@ -35,6 +47,10 @@ let dataFrom = document.getElementById('dateFrom'),
     userId = document.getElementById('userId'),
     userIdCont = document.getElementById('userIdCont'),
     userIdValue,
+
+    slice = document.getElementById('slice'),
+    sliceCont = document.getElementById('sliceCont'),
+    sliceValue,
 
     userIp = document.getElementById('userIp'),
     userIpCont = document.getElementById('userIpCont'),
@@ -121,6 +137,14 @@ getCommand.onclick = () => {
     dateTimeValue = '';
   }
 
+  if (siteId.checked == true && siteIdCont.value != '') {
+    siteIdValue = `,siteid=${siteIdCont.value}`;
+  } else if (siteId.checked == true) {
+    siteIdValue = ',siteid';
+  } else {
+    siteIdValue = '';
+  }
+
   if (ad.checked == true && adCont.value != '') {
     adValue = `,ad=${adCont.value}`;
   } else if (ad.checked == true) {
@@ -143,6 +167,22 @@ getCommand.onclick = () => {
     bannerValue = ',bid';
   } else {
     bannerValue = '';
+  }
+
+  if (bannerNum.checked == true && bannerNumCont.value != '') {
+    bannerNumValue = `,bn=${bannerNumCont.value}`;
+  } else if (bannerNum.checked == true) {
+    bannerNumValue = ',bn';
+  } else {
+    bannerNumValue = '';
+  }
+
+  if (bannerType.checked == true && bannerTypeCont.value != '') {
+    bannerTypeValue = `,bt=${bannerTypeCont.value}`;
+  } else if (bannerType.checked == true) {
+    bannerTypeValue = ',bt';
+  } else {
+    bannerTypeValue = '';
   }
 
   if (typeNum.checked == true && typeNumCont.value != '') {
@@ -179,6 +219,14 @@ getCommand.onclick = () => {
     userIdValue = ',userid';
   } else {
     userIdValue = '';
+  }
+
+  if (slice.checked == true && sliceCont.value != '') {
+    sliceValue = `,slice=${sliceCont.value}`;
+  } else if (slice.checked == true) {
+    sliceValue = ',slice';
+  } else {
+    sliceValue = '';
   }
 
   if (userIp.checked == true && userIpCont.value != '') {
@@ -248,6 +296,11 @@ getCommand.onclick = () => {
   }
 
   if (dataFrom.value != '' && dataTo.value != '') {
-    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${adValue}${profileValue}${bannerValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
+    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   }    
 }
+
+//JQ
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
