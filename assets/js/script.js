@@ -1,9 +1,11 @@
-let dataFrom = document.getElementById('dateFrom'),
-    dataTo = document.getElementById('dateTo'),
+let dateFrom = document.getElementById('dateFrom'),
+    dateTo = document.getElementById('dateTo'),
+
+    currentDate = new Date(),
 
     timeFrom = document.getElementById('timeFrom'),
     timeTo = document.getElementById('timeTo'),
-
+    
     dateTime = document.getElementById('dateTime'),
     dateTimeCont = document.getElementById('dateTimeCont'),
     dateTimeValue,
@@ -84,6 +86,8 @@ let dataFrom = document.getElementById('dateFrom'),
     clearCommand = document.getElementById('clearCommand')
     getCommand = document.getElementById('getCommand');
 
+// currentDate = Date.parse(currentDate);
+
 copyCommand.addEventListener('click', () => {
   const inputValue = result.value.trim();
   if (inputValue) {
@@ -109,25 +113,29 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
-  if (dataFrom.value == '') {
+  if (dateFrom.value == '') {
     alert('Введите корректую дату "От:"');
-    dataFrom.classList.add('border', 'border-danger');
+    dateFrom.classList.add('border', 'border-danger');
     return;
   } else {
-    dataFrom.classList.remove('border-danger');
-    dataFrom.classList.add('border', 'border-secondary');
+    dateFrom.classList.remove('border-danger');
+    dateFrom.classList.add('border', 'border-secondary');
   }
 
-  if (dataTo.value == '') {
+  if (dateTo.value == '') {
     alert('Введите корректую дату "До:"');
-    dataTo.classList.add('border', 'border-danger');
+    dateTo.classList.add('border', 'border-danger');
     return;
-  } else {
-    dataTo.classList.remove('border-danger');
-    dataTo.classList.add('border', 'border-secondary');
+  } else if (Date.parse(dateTo.value) > Date.parse(currentDate)) {    
+    alert('Дата "До:" не может быть познее чем сегодня');
+    dateTo.classList.add('border', 'border-danger');
+    return;
+  } else {    
+    dateTo.classList.remove('border-danger');
+    dateTo.classList.add('border', 'border-secondary');
   }
 
-  let dateTimeRange = `${dataFrom.value}T${timeFrom.value} ${dataTo.value}T${timeTo.value}`;
+  let dateTimeRange = `${dateFrom.value}T${timeFrom.value} ${dateTo.value}T${timeTo.value}`;
 
   if (dateTime.checked == true && dateTimeCont.value != '') {
     dateTimeValue = `datetime=${dateTimeCont.value}`;
@@ -295,7 +303,7 @@ getCommand.onclick = () => {
     toArchiveValue = '';
   }
 
-  if (dataFrom.value != '' && dataTo.value != '') {
+  if (dateFrom.value != '' && dateTo.value != '') {
     result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   }    
 }
@@ -304,27 +312,3 @@ getCommand.onclick = () => {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
-
-let date = new Date(),
-    day = date.getDate(),
-    month = date.getMonth() + 1,
-    year = date.getFullYear();
-
-document.write(`${day}/${month}/${year}`);
-
-function formatDate(date) {
-
-  var dd = date.getDate();
-  if (dd < 10) dd = '0' + dd;
-
-  var mm = date.getMonth() + 1;
-  if (mm < 10) mm = '0' + mm;
-
-  var yy = date.getFullYear();
-  if (yy < 10) yy = '0' + yy;
-
-  return dd + '/' + mm + '/' + yy;
-}
-
-var d = new Date(); // 30 Янв 2014
-alert( formatDate(d) ); // '30.01.14'
