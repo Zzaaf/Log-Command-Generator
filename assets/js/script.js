@@ -81,6 +81,8 @@ let dateFrom = document.getElementById('dateFrom'),
     toArchiveValue,
     archiveName,
 
+    uploadTemplate = document.getElementById('uploadTemplate'),
+
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
     clearCommand = document.getElementById('clearCommand')
@@ -303,9 +305,20 @@ getCommand.onclick = () => {
     toArchiveValue = '';
   }
 
-  if (dateFrom.value != '' && dateTo.value != '') {
+  if (uploadTemplate.value == 'Без шаблона') {
     result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
-  }    
+  } else if (uploadTemplate.value == 'Выгрузка для панели ОМИ') {
+    
+    result.value = `uids_sync log --output ${dateTimeValue}`;
+  } else if (uploadTemplate.value == 'Выгрузка для панели Tiburon') {
+
+  } else if (uploadTemplate.value == 'Выгрузка для панели OnlineInterviewer ОИ') {
+
+  } else {
+    return;
+  }
+
+    
 }
 
 //JQ
