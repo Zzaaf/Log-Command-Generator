@@ -308,8 +308,13 @@ getCommand.onclick = () => {
   if (uploadTemplate.value == 'Без шаблона') {
     result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   } else if (uploadTemplate.value == 'Выгрузка для панели ОМИ') {
-    
-    result.value = `uids_sync log --output ${dateTimeValue}`;
+    dateTime.checked = true;
+    dateTimeCont.setAttribute('readonly','');
+    ad.checked = true;
+    profile.checked = true;
+    banner.checked = true;
+    userId.checked = true;
+    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},omi_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=ЗНАЧЕНИЕ РК/omi_user/bannertype!=100,101 --outfile ИМЯ ФАЙЛА.csv`;
   } else if (uploadTemplate.value == 'Выгрузка для панели Tiburon') {
 
   } else if (uploadTemplate.value == 'Выгрузка для панели OnlineInterviewer ОИ') {
