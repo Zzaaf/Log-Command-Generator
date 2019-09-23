@@ -88,8 +88,6 @@ let dateFrom = document.getElementById('dateFrom'),
     clearCommand = document.getElementById('clearCommand')
     getCommand = document.getElementById('getCommand');
 
-// currentDate = Date.parse(currentDate);
-
 copyCommand.addEventListener('click', () => {
   const inputValue = result.value.trim();
   if (inputValue) {
@@ -117,6 +115,10 @@ clearCommand.onclick = () => {
 getCommand.onclick = () => {
   if (dateFrom.value == '') {
     alert('Введите корректую дату "От:"');
+    dateFrom.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateFrom.value) > Date.parse(dateTo.value)) {
+    alert('Дата "От:" не может быть познее чем "До:"');
     dateFrom.classList.add('border', 'border-danger');
     return;
   } else {
@@ -283,8 +285,10 @@ getCommand.onclick = () => {
     if (fileName == '') {
       alert('Введите корректное имя файла');
       return;
-    } else {
+    } else if (uploadTemplate.value == 'Без шаблона') {
       toFileValue = ` > ${fileName}.csv`;
+    } else if (uploadTemplate.value == 'Выгрузка для панели ОМИ'){
+      toFileValue = `--outfile ${fileName}.csv `;
     }
 
   } else {
@@ -314,16 +318,27 @@ getCommand.onclick = () => {
     profile.checked = true;
     banner.checked = true;
     userId.checked = true;
-    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},omi_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=ЗНАЧЕНИЕ РК/omi_user/bannertype!=100,101 --outfile ИМЯ ФАЙЛА.csv`;
+    userIdCont.setAttribute('readonly','');
+    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},omi_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/omi_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
   } else if (uploadTemplate.value == 'Выгрузка для панели Tiburon') {
-
+    dateTime.checked = true;
+    dateTimeCont.setAttribute('readonly','');
+    ad.checked = true;
+    profile.checked = true;
+    banner.checked = true;
+    userId.checked = true;
+    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},tiburon_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/tiburon_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
   } else if (uploadTemplate.value == 'Выгрузка для панели OnlineInterviewer ОИ') {
-
+    dateTime.checked = true;
+    dateTimeCont.setAttribute('readonly','');
+    ad.checked = true;
+    profile.checked = true;
+    banner.checked = true;
+    userId.checked = true;
+    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},oiv_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/oiv_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
   } else {
     return;
-  }
-
-    
+  }    
 }
 
 //JQ
