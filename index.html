@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Command Generator</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -13,348 +14,548 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.1.2</p>
+            <p class="lead">v.0.1.3</p>
         </div>
     </div>
 
     <div class="container">
 
         <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Без шаблона</a>
                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Шаблоны</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
             </div>
         </nav>
+
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-        </div>
-
-        <div class="row justify-content-between">
-
-            <div class="col-12">
-                <h4>Команда:</h4>
-            </div>
-                        
-            <div class="col-12">                
-                <div class="form-group">                    
-                    <select class="form-control" id="uploadTemplate" data-toggle="tooltip" data-placement="top" title="Выберете необходимый шаблон">
-                        <option>Без шаблона</option>
-                        <option>Выгрузка для панели ОМИ</option>
-                        <option>Выгрузка для панели Tiburon</option>
-                        <option>Выгрузка для панели OnlineInterviewer ОИ</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-                    <label class="btn btn-light border">
-                        <input type="radio" name="options" id="byDefault" autocomplete="off"> По умолчанию
-                    </label>
-                    <label class="btn btn-light border active">
-                        <input type="radio" name="options" id="toFile" autocomplete="off" checked> В файл
-                    </label>
-                    <label class="btn btn-light border">
-                        <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
-                    </label>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <h4>Дата и время:</h4>
-            </div>
-
-            <div class="col-12">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="row justify-content-between">
 
                     <div class="col-12">
-                        <select class="form-control mb-3">
-                            <option>Без шаблона</option>
-                            <option>За последние 7 дней</option>
-                            <option>За последние 30 дней</option>
-                        </select>                        
+                        <h4>Команда:</h4>
                     </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend" style="width: 100%;">
-                                <div class="input-group-text rounded-right" style="width: 100%;">
-                                    Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">        
-                            <div class="input-group-prepend" style="width: 100%;">
-                                <div class="input-group-text rounded-right" style="width: 100%;">
-                                    Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="row justify-content-between">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend" style="width: 100%;">
-                                <div class="input-group-text rounded-right" style="width: 100%;">
-                                    Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">            
-                            <div class="input-group-prepend" style="width: 100%;">
-                                <div class="input-group-text rounded-right" style="width: 100%;">
-                                    Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>                
-            </div>
-
-            <div class="col-12">
-                <h4>Фильтры:</h4>
-            </div>
-
-            <div class="col-6">
-                <div class="row justify-content-between">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    siteid: <input id="siteId" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="siteIdCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    ad: <input id="ad" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="adCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    bannernum: <input id="bannerNum" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="bannerNumCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    bannertype: <input id="bannerType" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="bannerTypeCont" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="row justify-content-between">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    profile: <input id="profile" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="profileCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    banner: <input id="banner" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="bannerCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    userid: <input id="userId" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="userIdCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    slice: <input id="slice" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="sliceCont" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <h4>Конфигурация:</h4>
-            </div>
-
-            <div class="col-6">
-                <div class="row justify-content-between">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    datetime: <input id="dateTime" type="checkbox" checked>
-                                </div>
-                            </div>                
-                            <input id="dateTimeCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    typenum: <input id="typeNum" type="checkbox" checked>
-                                </div>
-                            </div>
-                            <select id="typeNumCont" class="form-control">
-                                <option></option>
-                                <option>0 - exposure</option>
-                                <option>1 - click</option>
-                                <option>2 - subevent</option>
-                                <option>3 - bid</option>
-                                <option>4 - rtb feedback</option>                                
+                                
+                    <div class="col-12">                
+                        <div class="form-group">                    
+                            <select class="form-control" id="uploadTemplate" data-toggle="tooltip" data-placement="top" title="Выберете необходимый шаблон">
+                                <option>Без шаблона</option>
+                                <option>Выгрузка для панели ОМИ</option>
+                                <option>Выгрузка для панели Tiburon</option>
+                                <option>Выгрузка для панели OnlineInterviewer ОИ</option>
                             </select>
                         </div>
                     </div>
+        
+                    <div class="col-12">
+                        <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+                            <label class="btn btn-light border">
+                                <input type="radio" name="options" id="byDefault" autocomplete="off"> По умолчанию
+                            </label>
+                            <label class="btn btn-light border active">
+                                <input type="radio" name="options" id="toFile" autocomplete="off" checked> В файл
+                            </label>
+                            <label class="btn btn-light border">
+                                <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
+                            </label>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <h4>Дата и время:</h4>
+                    </div>
+        
+                    <div class="col-12">
+                        <div class="row justify-content-between">
+        
+                            <div class="col-12">
+                                <select class="form-control mb-3">
+                                    <option>Без шаблона</option>
+                                    <option>За последние 7 дней</option>
+                                    <option>За последние 30 дней</option>
+                                </select>                        
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend" style="width: 100%;">
+                                        <div class="input-group-text rounded-right" style="width: 100%;">
+                                            Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
+                                        </div>
+                                    </div>                            
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">        
+                                    <div class="input-group-prepend" style="width: 100%;">
+                                        <div class="input-group-text rounded-right" style="width: 100%;">
+                                            Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
+                                        </div>
+                                    </div>                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend" style="width: 100%;">
+                                        <div class="input-group-text rounded-right" style="width: 100%;">
+                                            Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
+                                        </div>
+                                    </div>                            
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">            
+                                    <div class="input-group-prepend" style="width: 100%;">
+                                        <div class="input-group-text rounded-right" style="width: 100%;">
+                                            Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
+                                        </div>
+                                    </div>                            
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+        
+                    <div class="col-12">
+                        <h4>Фильтры:</h4>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            siteid: <input id="siteId" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="siteIdCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            ad: <input id="ad" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="adCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            bannernum: <input id="bannerNum" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="bannerNumCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            bannertype: <input id="bannerType" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="bannerTypeCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            profile: <input id="profile" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="profileCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            banner: <input id="banner" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="bannerCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            userid: <input id="userId" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="userIdCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            slice: <input id="slice" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="sliceCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <h4>Конфигурация:</h4>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            datetime: <input id="dateTime" type="checkbox" checked>
+                                        </div>
+                                    </div>                
+                                    <input id="dateTimeCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            typenum: <input id="typeNum" type="checkbox" checked>
+                                        </div>
+                                    </div>
+                                    <select id="typeNumCont" class="form-control">
+                                        <option></option>
+                                        <option>0 - exposure</option>
+                                        <option>1 - click</option>
+                                        <option>2 - subevent</option>
+                                        <option>3 - bid</option>
+                                        <option>4 - rtb feedback</option>                                
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            statusnum: <input id="statusNum" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="statusNumCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            subtypenum: <input id="subTypeNum" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="subTypeNumCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            userip: <input id="userIp" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="userIpCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">        
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            agent: <input id="agent" type="checkbox" checked>
+                                        </div>
+                                    </div>                
+                                    <input id="agentCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">                
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            referer: <input id="referer" type="checkbox" checked>
+                                        </div>
+                                    </div>                
+                                    <input id="refererCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            custom: <input id="custom" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="customCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <textarea id="result" class="form-control" placeholder="Место получения команды"></textarea>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <div class="input-group mb-3">            
+                            <div class="input-group-append" style="width: 100%;">
+                                <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                                <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
+                                <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    statusnum: <input id="statusNum" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="statusNumCont" type="text" class="form-control">
+                    <div class="col-5">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="omi-list" data-toggle="list" href="#omi" role="tab" aria-controls="home">Выгрузка для панели ОМИ</a>
+                            <a class="list-group-item list-group-item-action" id="tiburon-list" data-toggle="list" href="#tiburon" role="tab" aria-controls="profile">Выгрузка для панели Tiburon</a>
+                            <a class="list-group-item list-group-item-action" id="oi-list" data-toggle="list" href="#oi" role="tab" aria-controls="messages">Выгрузка для панели OnlineInterviewer ОИ</a>
                         </div>
                     </div>
+                    <div class="col-7">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="omi" role="tabpanel" aria-labelledby="omi-list">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">        
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
 
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    subtypenum: <input id="subTypeNum" type="checkbox">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">            
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        ad: <input id="ad" type="checkbox">
+                                                    </div>
+                                                </div>                
+                                                <input id="adCont" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        profile: <input id="profile" type="checkbox">
+                                                    </div>
+                                                </div>                
+                                                <input id="profileCont" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+                                                <label class="btn btn-light border active">
+                                                    <input type="radio" name="options" id="toFile" autocomplete="off" checked> В файл
+                                                </label>
+                                                <label class="btn btn-light border">
+                                                    <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <textarea id="result" class="form-control" placeholder="Место получения команды">uids_sync log --output datetime,user,omi_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=672242/omi_user/bannertype!=100,101 --outfile 55574.csv 2019-01-01 2019-03-01</textarea>
+                                    </div>
+
+                                    <div class="input-group mb-3">            
+                                        <div class="input-group-append" style="width: 100%;">
+                                            <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                                            <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
+                                            <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>                
-                            <input id="subTypeNumCont" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            </div>
+                            <div class="tab-pane fade" id="tiburon" role="tabpanel" aria-labelledby="tiburon-list">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">        
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
 
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    userip: <input id="userIp" type="checkbox">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">            
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        ad: <input id="ad" type="checkbox">
+                                                    </div>
+                                                </div>                
+                                                <input id="adCont" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        profile: <input id="profile" type="checkbox">
+                                                    </div>
+                                                </div>                
+                                                <input id="profileCont" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+                                                <label class="btn btn-light border active">
+                                                    <input type="radio" name="options" id="toFile" autocomplete="off" checked> В файл
+                                                </label>
+                                                <label class="btn btn-light border">
+                                                    <input type="radio" name="options" id="toArchive" autocomplete="off"> В архив
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <textarea id="result" class="form-control" placeholder="Место получения команды">uids_sync log --output datetime,user,tiburon_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=672242/omi_user/bannertype!=100,101 --outfile 55574.csv 2019-01-01 2019-03-01</textarea>
+                                    </div>
+
+                                    <div class="input-group mb-3">            
+                                        <div class="input-group-append" style="width: 100%;">
+                                            <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                                            <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
+                                            <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>                
-                            <input id="userIpCont" type="text" class="form-control">
+                            </div>
+                            <div class="tab-pane fade" id="oi" role="tabpanel" aria-labelledby="oi-list">...</div>
+                            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
                         </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">        
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    agent: <input id="agent" type="checkbox" checked>
-                                </div>
-                            </div>                
-                            <input id="agentCont" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6">                
-                <div class="row">
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    referer: <input id="referer" type="checkbox" checked>
-                                </div>
-                            </div>                
-                            <input id="refererCont" type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="input-group mb-3">                
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    custom: <input id="custom" type="checkbox">
-                                </div>
-                            </div>                
-                            <input id="customCont" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <textarea id="result" class="form-control" placeholder="Место получения команды"></textarea>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="input-group mb-3">            
-                    <div class="input-group-append" style="width: 100%;">
-                        <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
-                        <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
-                        <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
