@@ -85,8 +85,44 @@ let dateFrom = document.getElementById('dateFrom'),
 
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
-    clearCommand = document.getElementById('clearCommand')
-    getCommand = document.getElementById('getCommand');
+    clearCommand = document.getElementById('clearCommand'),
+    getCommand = document.getElementById('getCommand'),
+
+    // Omi
+    dateFromOmi = document.getElementById('dateFromOmi'),
+    dateToOmi = document.getElementById('dateToOmi'),
+
+    currentDateOmi = new Date(),
+
+    timeFromOmi = document.getElementById('timeFromOmi'),
+    timeToOmi = document.getElementById('timeToOmi'),
+    
+    dateTimeOmi = document.getElementById('dateTimeOmi'),
+    dateTimeContOmi = document.getElementById('dateTimeContOmi'),
+    dateTimeValueOmi,
+
+    adOmi = document.getElementById('adOmi'),
+    adContOmi = document.getElementById('adContOmi'),
+    adValueOmi,
+
+    profileOmi = document.getElementById('profileOmi'),
+    profileContOmi = document.getElementById('profileContOmi'),
+    profileValueOmi,
+
+    toFileOmi = document.getElementById('toFileOmi'),
+    toFileValueOmi,
+    fileNameOmi,
+
+    toArchiveOmi = document.getElementById('toArchiveOmi'),
+    toArchiveValueOmi,
+    archiveNameOmi,
+
+    uploadTemplateOmi = document.getElementById('uploadTemplate'),
+
+    resultOmi = document.getElementById('resultOmi'),
+    copyCommandOmi = document.getElementById('copyCommandOmi'),
+    clearCommandOmi = document.getElementById('clearCommandOmi'),
+    getCommandOmi = document.getElementById('getCommandOmi');
 
 copyCommand.addEventListener('click', () => {
   const inputValue = result.value.trim();
@@ -280,15 +316,13 @@ getCommand.onclick = () => {
   }
 
   if (toFile.checked == true && toArchive.checked != true) {
-    fileName = prompt('Введите имя файла:', '');
+    fileName = prompt('Введите имя файла:', 'Номер_тикета');
 
     if (fileName == '') {
       alert('Введите корректное имя файла');
       return;
-    } else if (uploadTemplate.value == 'Без шаблона') {
+    } else {
       toFileValue = ` > ${fileName}.csv`;
-    } else if (uploadTemplate.value == 'Выгрузка для панели ОМИ'){
-      toFileValue = `--outfile ${fileName}.csv `;
     }
 
   } else {
@@ -296,7 +330,7 @@ getCommand.onclick = () => {
   }
 
   if (toFile.checked != true && toArchive.checked == true) {
-    archiveName = prompt('Введите имя архива:', '');
+    archiveName = prompt('Введите имя архива:', 'Номер_тикета');
 
     if (archiveName == '') {
       alert('Введите корректное имя архива');
@@ -309,39 +343,11 @@ getCommand.onclick = () => {
     toArchiveValue = '';
   }
 
-  if (uploadTemplate.value == 'Без шаблона') {
+  if (dateFrom.value != '' && dateTo.value != '') {
     result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
-  } else if (uploadTemplate.value == 'Выгрузка для панели ОМИ') {
-    dateTime.checked = true;
-    dateTimeCont.setAttribute('readonly','');
-    ad.checked = true;
-    profile.checked = true;
-    banner.checked = true;
-    userId.checked = true;
-    userIdCont.setAttribute('readonly','');
-    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},omi_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/omi_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
-  } else if (uploadTemplate.value == 'Выгрузка для панели Tiburon') {
-    dateTime.checked = true;
-    dateTimeCont.setAttribute('readonly','');
-    ad.checked = true;
-    profile.checked = true;
-    banner.checked = true;
-    userId.checked = true;
-    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},tiburon_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/tiburon_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
-  } else if (uploadTemplate.value == 'Выгрузка для панели OnlineInterviewer ОИ') {
-    dateTime.checked = true;
-    dateTimeCont.setAttribute('readonly','');
-    ad.checked = true;
-    profile.checked = true;
-    banner.checked = true;
-    userId.checked = true;
-    result.value = `uids_sync log --output ${dateTimeValue}${userIdValue},oiv_user${adValue}${profileValue}${bannerValue}type,subtype, --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/${adValue}/oiv_user/bannertype!=100,101 ${toFileValue}${dateFrom.value} ${dateTo.value}`;
-  } else {
-    return;
-  }    
+  }
+
 }
 
-//JQ
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-});
+
+
