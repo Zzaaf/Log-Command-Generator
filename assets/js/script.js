@@ -124,6 +124,7 @@ let dateFrom = document.getElementById('dateFrom'),
     clearCommandOmi = document.getElementById('clearCommandOmi'),
     getCommandOmi = document.getElementById('getCommandOmi');
 
+// Custom code
 copyCommand.addEventListener('click', () => {
   const inputValue = result.value.trim();
   if (inputValue) {
@@ -349,5 +350,109 @@ getCommand.onclick = () => {
 
 }
 
+// Omi code
+copyCommandOmi.addEventListener('click', () => {
+  const inputValue = resultOmi.value.trim();
+  if (inputValue) {
+    navigator.clipboard.writeText(inputValue)
+      .then(() => {
+        result.value = '';
+        if (copyCommandOmi.innerText !== 'Скопировано!') {
+          const originalText = copyCommandOmi.innerText;
+          copyCommandOmi.innerText = 'Скопировано!';
+          setTimeout(() => {
+            copyCommandOmi.innerText = originalText;
+          }, 2000);
+        }
+      })
+      .catch(err => {
+        console.log('Что-то пошло не так...', err);
+      })
+  }
+});
 
+clearCommandOmi.onclick = () => {
+  resultOmi.value = '';
+}
 
+getCommandOmi.onclick = () => {
+  if (dateFromOmi.value == '') {
+    alert('Введите корректую дату "От:"');
+    dateFromOmi.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateFromOmi.value) > Date.parse(dateToOmi.value)) {
+    alert('Дата "От:" не может быть познее чем "До:"');
+    dateFromOmi.classList.add('border', 'border-danger');
+    return;
+  } else {
+    dateFromOmi.classList.remove('border-danger');
+    dateFromOmi.classList.add('border', 'border-secondary');
+  }
+
+  if (dateToOmi.value == '') {
+    alert('Введите корректую дату "До:"');
+    dateToOmi.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateToOmi.value) > Date.parse(currentDate)) {    
+    alert('Дата "До:" не может быть познее чем сегодня');
+    dateToOmi.classList.add('border', 'border-danger');
+    return;
+  } else {    
+    dateToOmi.classList.remove('border-danger');
+    dateToOmi.classList.add('border', 'border-secondary');
+  }
+
+  let dateTimeRangeOmi = `${dateFromOmi.value} ${dateToOmi.value}`;
+
+  if (adOmi.checked == true && adContOmi.value != '') {
+    adContOmi.classList.remove('border-danger');
+    adContOmi.classList.add('border', 'border-secondary');
+    adValueOmi = adContOmi.value;
+  } else if (adOmi.checked == true && adContOmi.value == '') {
+    alert('Введите корректное имя AD');
+    adContOmi.classList.add('border', 'border-danger');
+  } else {
+    return false;
+  }
+
+  if (profileOmi.checked == true && profileContOmi.value != '') {
+    profileContOmi.classList.remove('border-danger');
+    profileContOmi.classList.add('border', 'border-secondary');
+    profileValueOmi = `profile=${profileContOmi.value}`;
+  } else if (profileOmi.checked == true && profileContOmi.value == '') {
+    alert('Введите корректное имя Profile');
+    profileValueOmi.classList.add('border', 'border-danger');    
+  } else {
+    return false;
+  }
+
+  if (toFileOmi.checked == true && toArchiveOmi.checked != true && adContOmi.value != '') {
+    fileNameOmi = prompt('Введите имя файла:', 'Номер_тикета');
+
+    if (fileNameOmi == '') {
+      alert('Введите корректное имя файла');
+      return;
+    } else {
+      toFileValueOmi = `${fileNameOmi}.csv`;
+    }
+
+  } else {
+    toFileValueOmi = '';
+  }
+
+  if (toFileOmi.checked != true && toArchiveOmi.checked == true) {
+    archiveNameOmi = prompt('Введите имя архива:', 'Номер_тикета');
+
+    if (archiveNameOmi == '') {
+      alert('Введите корректное имя архива');
+      return;
+    } else {
+      toArchiveValueOmi = ` | gzip > ${archiveNameOmi}.gz`;
+    }
+
+  }
+
+  if (dateFromOmi.value != '' && dateToOmi.value != '' && adContOmi.value != '') {
+    resultOmi.value = `uids_sync log --output datetime,user,omi_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=${adValueOmi}/${profileValueOmi}/omi_user/bannertype!=100,101 --outfile ${toFileValueOmi} ${dateTimeRangeOmi}`;
+  }
+}
