@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.1.5</p>
+            <p class="lead">v.0.1.7</p>
         </div>
     </div>
 
@@ -417,21 +417,20 @@
                                                         profile: <input id="profileOmi" type="checkbox">
                                                     </div>
                                                 </div>                
-                                                <input id="profileContOmi" type="text" class="form-control">
+                                                <input id="profileContOmi" type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Если профилей несколько используйте запятую">
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
                                                 <label class="btn btn-light border active">
-                                                    <input type="radio" id="toFileOmi" autocomplete="off" checked> В файл
+                                                  <input type="radio" name="options" id="toFileOmi" autocomplete="off" checked> В файл
                                                 </label>
                                                 <label class="btn btn-light border">
-                                                    <input type="radio" id="toArchiveOmi" autocomplete="off"> В архив
+                                                  <input type="radio" name="options" id="toArchiveOmi" autocomplete="off"> В архив
                                                 </label>
-                                            </div>
-                                        </div>
-
+                                            </div>                                            
+                                        </div>                                        
                                     </div>
 
                                     <div class="input-group mb-3">
@@ -456,7 +455,7 @@
                                             <div class="input-group mb-3">                
                                                 <div class="input-group-prepend" style="width: 100%;">
                                                     <div class="input-group-text rounded-right" style="width: 100%;">
-                                                        Дата "От": <input id="dateFrom" type="date" max="24:00" style="width: 100%;" required>
+                                                        Дата "От": <input id="dateFromTiburon" type="date" max="24:00" style="width: 100%;" required>
                                                     </div>
                                                 </div>                            
                                             </div>
@@ -466,7 +465,7 @@
                                             <div class="input-group mb-3">        
                                                 <div class="input-group-prepend" style="width: 100%;">
                                                     <div class="input-group-text rounded-right" style="width: 100%;">
-                                                        Дата "До": <input id="dateTo" type="date" style="width: 100%;" required>
+                                                        Дата "До": <input id="dateToTiburon" type="date" style="width: 100%;" required>
                                                     </div>
                                                 </div>                            
                                             </div>
@@ -476,7 +475,7 @@
                                             <div class="input-group mb-3">                
                                                 <div class="input-group-prepend" style="width: 100%;">
                                                     <div class="input-group-text rounded-right" style="width: 100%;">
-                                                        Время "От": <input id="timeFrom" type="time" value="00:00" style="width: 100%;" required>
+                                                        Время "От": <input id="timeFromTiburon" type="time" value="00:00" style="width: 100%;" required>
                                                     </div>
                                                 </div>                            
                                             </div>
@@ -486,7 +485,7 @@
                                             <div class="input-group mb-3">            
                                                 <div class="input-group-prepend" style="width: 100%;">
                                                     <div class="input-group-text rounded-right" style="width: 100%;">
-                                                        Время "До": <input id="timeTo" type="time" value="23:59" style="width: 100%;" required>
+                                                        Время "До": <input id="timeToTiburon" type="time" value="23:59" style="width: 100%;" required>
                                                     </div>
                                                 </div>                            
                                             </div>
@@ -496,10 +495,10 @@
                                             <div class="input-group mb-3">                
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">
-                                                        ad: <input id="ad" type="checkbox">
+                                                        ad: <input id="adTiburon" type="checkbox" checked>
                                                     </div>
                                                 </div>                
-                                                <input id="adCont" type="text" class="form-control">
+                                                <input id="adContTiburon" type="text" class="form-control">
                                             </div>
                                         </div>
 
@@ -507,20 +506,20 @@
                                             <div class="input-group mb-3">                
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">
-                                                        profile: <input id="profile" type="checkbox">
+                                                        profile: <input id="profileTiburon" type="checkbox">
                                                     </div>
                                                 </div>                
-                                                <input id="profileCont" type="text" class="form-control">
+                                                <input id="profileContTiburon" type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Если профилей несколько используйте запятую">
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
                                                 <label class="btn btn-light border active">
-                                                    <input type="radio" id="toFileTiburon" autocomplete="off" checked> В файл
+                                                    <input type="radio" name="options" id="toFileTiburon" autocomplete="off" checked> В файл
                                                 </label>
                                                 <label class="btn btn-light border">
-                                                    <input type="radio" id="toArchiveTiburon" autocomplete="off"> В архив
+                                                    <input type="radio" name="options" id="toArchiveTiburon" autocomplete="off"> В архив
                                                 </label>
                                             </div>
                                         </div>
@@ -528,14 +527,14 @@
                                     </div>
 
                                     <div class="input-group mb-3">
-                                        <textarea id="result" class="form-control" placeholder="Место получения команды">uids_sync log --output datetime,user,tiburon_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=672242/omi_user/bannertype!=100,101 --outfile 55574.csv 2019-01-01 2019-03-01</textarea>
+                                        <textarea id="resultTiburon" class="form-control" placeholder="Место получения команды" rows="5"></textarea>
                                     </div>
 
                                     <div class="input-group mb-3">            
                                         <div class="input-group-append" style="width: 100%;">
-                                            <button id="clearCommand" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
-                                            <button id="copyCommand" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
-                                            <button id="getCommand" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                                            <button id="clearCommandTiburon" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                                            <button id="copyCommandTiburon" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
+                                            <button id="getCommandTiburon" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
                                         </div>
                                     </div>
                                 </div>
@@ -543,7 +542,95 @@
 
                             <!-- OnlineInterviewer -->
                             <div class="tab-pane fade" id="oi" role="tabpanel" aria-labelledby="oi-list">
-                                OnlineInterviewer
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "От": <input id="dateFromOI" type="date" max="24:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">        
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Дата "До": <input id="dateToOI" type="date" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "От": <input id="timeFromOI" type="time" value="00:00" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">            
+                                                <div class="input-group-prepend" style="width: 100%;">
+                                                    <div class="input-group-text rounded-right" style="width: 100%;">
+                                                        Время "До": <input id="timeToOI" type="time" value="23:59" style="width: 100%;" required>
+                                                    </div>
+                                                </div>                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        ad: <input id="adOI" type="checkbox" checked>
+                                                    </div>
+                                                </div>                
+                                                <input id="adContOI" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">                
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        profile: <input id="profileOI" type="checkbox">
+                                                    </div>
+                                                </div>                
+                                                <input id="profileContOI" type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Если профилей несколько используйте запятую">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+                                                <label class="btn btn-light border active">
+                                                    <input type="radio" name="options" id="toFileOI" autocomplete="off" checked> В файл
+                                                </label>
+                                                <label class="btn btn-light border">
+                                                    <input type="radio" name="options" id="toArchiveOI" autocomplete="off"> В архив
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <textarea id="resultOI" class="form-control" placeholder="Место получения команды" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="input-group mb-3">            
+                                        <div class="input-group-append" style="width: 100%;">
+                                            <button id="clearCommandOI" class="btn btn-outline-danger rounded-left" style="width: 100%;" type="button">Очистить</button>
+                                            <button id="copyCommandOI" class="btn btn-outline-primary" style="width: 100%;" type="button">Скопировать</button>
+                                            <button id="getCommandOI" class="btn btn-outline-success" style="width: 100%;" type="button">Получить команду</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -81,8 +81,6 @@ let dateFrom = document.getElementById('dateFrom'),
     toArchiveValue,
     archiveName,
 
-    uploadTemplate = document.getElementById('uploadTemplate'),
-
     result = document.getElementById('result'),
     copyCommand = document.getElementById('copyCommand'),
     clearCommand = document.getElementById('clearCommand'),
@@ -117,12 +115,78 @@ let dateFrom = document.getElementById('dateFrom'),
     toArchiveValueOmi,
     archiveNameOmi,
 
-    uploadTemplateOmi = document.getElementById('uploadTemplate'),
-
     resultOmi = document.getElementById('resultOmi'),
     copyCommandOmi = document.getElementById('copyCommandOmi'),
     clearCommandOmi = document.getElementById('clearCommandOmi'),
     getCommandOmi = document.getElementById('getCommandOmi');
+
+    // Tiburon
+    dateFromTiburon = document.getElementById('dateFromTiburon'),
+    dateToTiburon = document.getElementById('dateToTiburon'),
+
+    currentDateTiburon = new Date(),
+
+    timeFromTiburon = document.getElementById('timeFromTiburon'),
+    timeToTiburon = document.getElementById('timeToTiburon'),
+    
+    dateTimeTiburon = document.getElementById('dateTimeTiburon'),
+    dateTimeContTiburon = document.getElementById('dateTimeContTiburon'),
+    // dateTimeValueTiburon,
+
+    adTiburon = document.getElementById('adTiburon'),
+    adContTiburon = document.getElementById('adContTiburon'),
+    // adValueTiburon,
+
+    profileTiburon = document.getElementById('profileTiburon'),
+    profileContTiburon = document.getElementById('profileContTiburon'),
+    // profileValueTiburon,
+
+    toFileTiburon = document.getElementById('toFileTiburon'),
+    // toFileValueTiburon,
+    // fileNameTiburon,
+
+    toArchiveTiburon = document.getElementById('toArchiveTiburon'),
+    // toArchiveValueTiburon,
+    // archiveNameTiburon,
+
+    resultTiburon = document.getElementById('resultTiburon'),
+    copyCommandTiburon = document.getElementById('copyCommandTiburon'),
+    clearCommandTiburon = document.getElementById('clearCommandTiburon'),
+    getCommandTiburon = document.getElementById('getCommandTiburon');
+
+    // OI
+    dateFromOI = document.getElementById('dateFromOI'),
+    dateToOI = document.getElementById('dateToOI'),
+
+    currentDateOI = new Date(),
+
+    timeFromOI = document.getElementById('timeFromOI'),
+    timeToOI = document.getElementById('timeToOI'),
+    
+    dateTimeOI = document.getElementById('dateTimeOI'),
+    dateTimeContOI = document.getElementById('dateTimeContOI'),
+    // dateTimeValueOI,
+
+    adOI = document.getElementById('adOI'),
+    adContOI = document.getElementById('adContOI'),
+    // adValueOI,
+
+    profileOI = document.getElementById('profileOI'),
+    profileContOI = document.getElementById('profileContOI'),
+    // profileValueOI,
+
+    toFileOI = document.getElementById('toFileOI'),
+    // toFileValueOI,
+    // fileNameOI,
+
+    toArchiveOI = document.getElementById('toArchiveOI'),
+    // toArchiveValueOI,
+    // archiveNameOI,
+
+    resultOI = document.getElementById('resultOI'),
+    copyCommandOI = document.getElementById('copyCommandOI'),
+    clearCommandOI = document.getElementById('clearCommandOI'),
+    getCommandOI = document.getElementById('getCommandOI');
 
 // Custom code
 copyCommand.addEventListener('click', () => {
@@ -411,19 +475,19 @@ getCommandOmi.onclick = () => {
   } else if (adOmi.checked == true && adContOmi.value == '') {
     alert('Введите корректное имя AD');
     adContOmi.classList.add('border', 'border-danger');
-  } else {
-    return false;
-  }
+    return;
+  } 
 
   if (profileOmi.checked == true && profileContOmi.value != '') {
     profileContOmi.classList.remove('border-danger');
     profileContOmi.classList.add('border', 'border-secondary');
-    profileValueOmi = `profile=${profileContOmi.value}`;
+    profileValueOmi = `profile=${profileContOmi.value}/`;
   } else if (profileOmi.checked == true && profileContOmi.value == '') {
     alert('Введите корректное имя Profile');
-    profileValueOmi.classList.add('border', 'border-danger');    
+    profileContOmi.classList.add('border', 'border-danger');
+    return;
   } else {
-    return false;
+    profileValueOmi = '';
   }
 
   if (toFileOmi.checked == true && toArchiveOmi.checked != true && adContOmi.value != '') {
@@ -432,27 +496,256 @@ getCommandOmi.onclick = () => {
     if (fileNameOmi == '') {
       alert('Введите корректное имя файла');
       return;
-    } else {
+    } else if (fileNameOmi != '') {
       toFileValueOmi = `${fileNameOmi}.csv`;
+      toArchiveValueOmi = '';
+    } else {
+      toFileValueOmi = '';
     }
 
-  } else {
-    toFileValueOmi = '';
   }
 
   if (toFileOmi.checked != true && toArchiveOmi.checked == true) {
     archiveNameOmi = prompt('Введите имя архива:', 'Номер_тикета');
 
     if (archiveNameOmi == '') {
-      alert('Введите корректное имя архива');
+      alert('Введите корректное имя архива');      
       return;
+    } else if (archiveNameOmi != '') {
+      toArchiveValueOmi = `| gzip > ${archiveNameOmi}.gz`;
+      toFileValueOmi = '';
     } else {
-      toArchiveValueOmi = ` | gzip > ${archiveNameOmi}.gz`;
+      toArchiveValueOmi = '';
     }
 
   }
 
   if (dateFromOmi.value != '' && dateToOmi.value != '' && adContOmi.value != '') {
-    resultOmi.value = `uids_sync log --output datetime,user,omi_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=${adValueOmi}/${profileValueOmi}/omi_user/bannertype!=100,101 --outfile ${toFileValueOmi} ${dateTimeRangeOmi}`;
+    resultOmi.value = `uids_sync log --output datetime,user,omi_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=${adValueOmi}/${profileValueOmi}omi_user/bannertype!=100,101 --outfile ${toFileValueOmi}${toArchiveValueOmi} ${dateTimeRangeOmi}`;
   }
 }
+
+// Tiburon code
+copyCommandTiburon.addEventListener('click', () => {
+  const inputValue = resultTiburon.value.trim();
+  if (inputValue) {
+    navigator.clipboard.writeText(inputValue)
+      .then(() => {
+        result.value = '';
+        if (copyCommandTiburon.innerText !== 'Скопировано!') {
+          const originalText = copyCommandTiburon.innerText;
+          copyCommandTiburon.innerText = 'Скопировано!';
+          setTimeout(() => {
+            copyCommandTiburon.innerText = originalText;
+          }, 2000);
+        }
+      })
+      .catch(err => {
+        console.log('Что-то пошло не так...', err);
+      })
+  }
+});
+
+clearCommandTiburon.onclick = () => {
+  resultTiburon.value = '';
+}
+
+getCommandTiburon.onclick = () => {
+  if (dateFromTiburon.value == '') {
+    alert('Введите корректую дату "От:"');
+    dateFromTiburon.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateFromTiburon.value) > Date.parse(dateToTiburon.value)) {
+    alert('Дата "От:" не может быть познее чем "До:"');
+    dateFromTiburon.classList.add('border', 'border-danger');
+    return;
+  } else {
+    dateFromTiburon.classList.remove('border-danger');
+    dateFromTiburon.classList.add('border', 'border-secondary');
+  }
+
+  if (dateToTiburon.value == '') {
+    alert('Введите корректую дату "До:"');
+    dateToTiburon.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateToTiburon.value) > Date.parse(currentDate)) {    
+    alert('Дата "До:" не может быть познее чем сегодня');
+    dateToTiburon.classList.add('border', 'border-danger');
+    return;
+  } else {    
+    dateToTiburon.classList.remove('border-danger');
+    dateToTiburon.classList.add('border', 'border-secondary');
+  }
+
+  let dateTimeRangeTiburon = `${dateFromTiburon.value} ${dateToTiburon.value}`;
+
+  if (adTiburon.checked == true && adContTiburon.value != '') {
+    adContTiburon.classList.remove('border-danger');
+    adContTiburon.classList.add('border', 'border-secondary');
+    adValueTiburon = adContTiburon.value;
+  } else if (adTiburon.checked == true && adContTiburon.value == '') {
+    alert('Введите корректное имя AD');
+    adContTiburon.classList.add('border', 'border-danger');
+    return;
+  } 
+
+  if (profileTiburon.checked == true && profileContTiburon.value != '') {
+    profileContTiburon.classList.remove('border-danger');
+    profileContTiburon.classList.add('border', 'border-secondary');
+    profileValueTiburon = `profile=${profileContTiburon.value}/`;
+  } else if (profileTiburon.checked == true && profileContTiburon.value == '') {
+    alert('Введите корректное имя Profile');
+    profileContTiburon.classList.add('border', 'border-danger');
+    return;
+  } else {
+    profileValueTiburon = '';
+  }
+
+  if (toFileTiburon.checked == true && toArchiveTiburon.checked != true && adContTiburon.value != '') {
+    fileNameTiburon = prompt('Введите имя файла:', 'Номер_тикета');
+
+    if (fileNameTiburon == '') {
+      alert('Введите корректное имя файла');
+      return;
+    } else if (fileNameTiburon != '') {
+      toFileValueTiburon = `${fileNameTiburon}.csv`;
+      toArchiveValueTiburon = '';
+    } else {
+      toFileValueTiburon = '';
+    }
+
+  }
+
+  if (toFileTiburon.checked != true && toArchiveTiburon.checked == true) {
+    archiveNameTiburon = prompt('Введите имя архива:', 'Номер_тикета');
+
+    if (archiveNameTiburon == '') {
+      alert('Введите корректное имя архива');      
+      return;
+    } else if (archiveNameTiburon != '') {
+      toArchiveValueTiburon = `| gzip > ${archiveNameTiburon}.gz`;
+      toFileValueTiburon = '';
+    } else {
+      toArchiveValueTiburon = '';
+    }
+
+  }
+
+  if (dateFromTiburon.value != '' && dateToTiburon.value != '' && adContTiburon.value != '') {
+    resultTiburon.value = `uids_sync log --output datetime,user,tiburon_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=${adValueTiburon}/${profileValueTiburon}tiburon_user/bannertype!=100,101 --outfile ${toFileValueTiburon}${toArchiveValueTiburon} ${dateTimeRangeTiburon}`;
+  }
+}
+
+// OI code
+copyCommandOI.addEventListener('click', () => {
+  const inputValue = resultOI.value.trim();
+  if (inputValue) {
+    navigator.clipboard.writeText(inputValue)
+      .then(() => {
+        result.value = '';
+        if (copyCommandOI.innerText !== 'Скопировано!') {
+          const originalText = copyCommandOI.innerText;
+          copyCommandOI.innerText = 'Скопировано!';
+          setTimeout(() => {
+            copyCommandOI.innerText = originalText;
+          }, 2000);
+        }
+      })
+      .catch(err => {
+        console.log('Что-то пошло не так...', err);
+      })
+  }
+});
+
+clearCommandOI.onclick = () => {
+  resultOI.value = '';
+}
+
+getCommandOI.onclick = () => {
+  if (dateFromOI.value == '') {
+    alert('Введите корректую дату "От:"');
+    dateFromOI.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateFromOI.value) > Date.parse(dateToOI.value)) {
+    alert('Дата "От:" не может быть познее чем "До:"');
+    dateFromOI.classList.add('border', 'border-danger');
+    return;
+  } else {
+    dateFromOI.classList.remove('border-danger');
+    dateFromOI.classList.add('border', 'border-secondary');
+  }
+
+  if (dateToOI.value == '') {
+    alert('Введите корректую дату "До:"');
+    dateToOI.classList.add('border', 'border-danger');
+    return;
+  } else if (Date.parse(dateToOI.value) > Date.parse(currentDate)) {    
+    alert('Дата "До:" не может быть познее чем сегодня');
+    dateToOI.classList.add('border', 'border-danger');
+    return;
+  } else {    
+    dateToOI.classList.remove('border-danger');
+    dateToOI.classList.add('border', 'border-secondary');
+  }
+
+  let dateTimeRangeOI = `${dateFromOI.value} ${dateToOI.value}`;
+
+  if (adOI.checked == true && adContOI.value != '') {
+    adContOI.classList.remove('border-danger');
+    adContOI.classList.add('border', 'border-secondary');
+    adValueOI = adContOI.value;
+  } else if (adOI.checked == true && adContOI.value == '') {
+    alert('Введите корректное имя AD');
+    adContOI.classList.add('border', 'border-danger');
+    return;
+  } 
+
+  if (profileOI.checked == true && profileContOI.value != '') {
+    profileContOI.classList.remove('border-danger');
+    profileContOI.classList.add('border', 'border-secondary');
+    profileValueOI = `profile=${profileContOI.value}/`;
+  } else if (profileOI.checked == true && profileContOI.value == '') {
+    alert('Введите корректное имя Profile');
+    profileContOI.classList.add('border', 'border-danger');
+    return;
+  } else {
+    profileValueOI = '';
+  }
+
+  if (toFileOI.checked == true && toArchiveOI.checked != true && adContOI.value != '') {
+    fileNameOI = prompt('Введите имя файла:', 'Номер_тикета');
+
+    if (fileNameOI == '') {
+      alert('Введите корректное имя файла');
+      return;
+    } else if (fileNameOI != '') {
+      toFileValueOI = `${fileNameOI}.csv`;
+      toArchiveValueOI = '';
+    } else {
+      toFileValueOI = '';
+    }
+
+  }
+
+  if (toFileOI.checked != true && toArchiveOI.checked == true) {
+    archiveNameOI = prompt('Введите имя архива:', 'Номер_тикета');
+
+    if (archiveNameOI == '') {
+      alert('Введите корректное имя архива');      
+      return;
+    } else if (archiveNameOI != '') {
+      toArchiveValueOI = `| gzip > ${archiveNameOI}.gz`;
+      toFileValueOI = '';
+    } else {
+      toArchiveValueOI = '';
+    }
+
+  }
+
+  if (dateFromOI.value != '' && dateToOI.value != '' && adContOI.value != '') {
+    resultOI.value = `uids_sync log --output datetime,user,oiv_user,ad,profile,banner,type,subtype --filters status=0/type=0,1,2/subtype=0,1,2,3,4,5,6/ad=${adValueOI}/${profileValueOI}oiv_user/bannertype!=100,101 --outfile ${toFileValueOI}${toArchiveValueOI} ${dateTimeRangeOI}`;
+  }
+}
+
+// JQ
+$('[data-toggle="tooltip"]').tooltip();
