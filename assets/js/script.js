@@ -131,23 +131,23 @@ let dateFrom = document.getElementById('dateFrom'),
     
     dateTimeTiburon = document.getElementById('dateTimeTiburon'),
     dateTimeContTiburon = document.getElementById('dateTimeContTiburon'),
-    // dateTimeValueTiburon,
+    dateTimeValueTiburon = '',
 
     adTiburon = document.getElementById('adTiburon'),
     adContTiburon = document.getElementById('adContTiburon'),
-    // adValueTiburon,
+    adValueTiburon = '',
 
     profileTiburon = document.getElementById('profileTiburon'),
     profileContTiburon = document.getElementById('profileContTiburon'),
-    // profileValueTiburon,
+    profileValueTiburon = '',
 
     toFileTiburon = document.getElementById('toFileTiburon'),
-    // toFileValueTiburon,
-    // fileNameTiburon,
+    toFileValueTiburon = '',
+    fileNameTiburon = '',
 
     toArchiveTiburon = document.getElementById('toArchiveTiburon'),
-    // toArchiveValueTiburon,
-    // archiveNameTiburon,
+    toArchiveValueTiburon = '',
+    archiveNameTiburon = '',
 
     resultTiburon = document.getElementById('resultTiburon'),
     copyCommandTiburon = document.getElementById('copyCommandTiburon'),
@@ -165,23 +165,23 @@ let dateFrom = document.getElementById('dateFrom'),
     
     dateTimeOI = document.getElementById('dateTimeOI'),
     dateTimeContOI = document.getElementById('dateTimeContOI'),
-    // dateTimeValueOI,
+    dateTimeValueOI = '',
 
     adOI = document.getElementById('adOI'),
     adContOI = document.getElementById('adContOI'),
-    // adValueOI,
+    adValueOI = '',
 
     profileOI = document.getElementById('profileOI'),
     profileContOI = document.getElementById('profileContOI'),
-    // profileValueOI,
+    profileValueOI = '',
 
     toFileOI = document.getElementById('toFileOI'),
-    // toFileValueOI,
-    // fileNameOI,
+    toFileValueOI = '',
+    fileNameOI = '',
 
     toArchiveOI = document.getElementById('toArchiveOI'),
-    // toArchiveValueOI,
-    // archiveNameOI,
+    toArchiveValueOI = '',
+    archiveNameOI = '',
 
     resultOI = document.getElementById('resultOI'),
     copyCommandOI = document.getElementById('copyCommandOI'),
