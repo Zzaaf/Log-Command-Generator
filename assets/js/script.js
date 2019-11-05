@@ -10,6 +10,8 @@ let dateFrom = document.getElementById('dateFrom'),
     dateTimeCont = document.getElementById('dateTimeCont'),
     dateTimeValue,
 
+    dateTemp = document.getElementById('dateTemp'),
+
     siteId = document.getElementById('siteId'),
     siteIdCont = document.getElementById('siteIdCont'),
     siteIdValue,
@@ -214,6 +216,12 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
+  if (dateTemp.value = 'За последние 7 дней') {    
+    dateTo.setAttribute('value', '2019-07-07');
+  } else if (dateTemp.value = 'За последние 30 дней') {
+    dateTo.setAttribute('value', '2019-07-30');
+  }
+
   if (dateFrom.value == '') {
     alert('Введите корректую дату "От:"');
     dateFrom.classList.add('border', 'border-danger');
