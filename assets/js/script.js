@@ -216,10 +216,20 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
-  if (dateTemp.value = 'За последние 7 дней') {    
-    dateTo.setAttribute('value', '2019-07-07');
-  } else if (dateTemp.value = 'За последние 30 дней') {
-    dateTo.setAttribute('value', '2019-07-30');
+  let d = new Date(),
+      current_date = d.getDate(),
+      current_month = d.getMonth() + 1,
+      current_year = d.getFullYear(),
+
+      week = d.getDate() - 7;
+      month = d.getDate() - 30;
+
+  if (dateTemp.value == 'За последние 7 дней') {  
+    dateFrom.setAttribute('value', `${current_year}-${current_month}-${week}`);
+    dateTo.setAttribute('value', `${current_year}-${current_month}-${current_date}`);
+  } else if (dateTemp.value == 'За последние 30 дней') {
+    dateFrom.setAttribute('value', `${current_year}-${current_month}-${month}`);
+    dateTo.setAttribute('value', `${current_year}-${current_month}-${current_date}`);
   }
 
   if (dateFrom.value == '') {
