@@ -221,14 +221,17 @@ getCommand.onclick = () => {
       current_month = d.getMonth() + 1,
       current_year = d.getFullYear(),
 
-      week = d.getDate() - 7;
-      month = d.getDate() - 30;
+      week = new Date(),      
+      month = new Date();
+
+      week.setDate(week.getDate() - 7);
+      month.setDate(month.getDate() - 30);      
 
   if (dateTemp.value == 'За последние 7 дней') {  
-    dateFrom.setAttribute('value', `${current_year}-${current_month}-${week}`);
+    dateFrom.setAttribute('value', week.toISOString().substring(0, 10).toString());
     dateTo.setAttribute('value', `${current_year}-${current_month}-${current_date}`);
   } else if (dateTemp.value == 'За последние 30 дней') {
-    dateFrom.setAttribute('value', `${current_year}-${current_month}-${month}`);
+    dateFrom.setAttribute('value', month.toISOString().substring(0, 10).toString());
     dateTo.setAttribute('value', `${current_year}-${current_month}-${current_date}`);
   }
 
