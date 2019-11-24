@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="display-4">Log Command Generator</h1>
             <p class="lead">Заполните необходимые поля для получения команды</p>
-            <p class="lead">v.0.2.0</p>
+            <p class="lead">v.0.2.1</p>
         </div>
     </div>
 
@@ -246,20 +246,20 @@
                             </div>
                         </div>
                     </div>
-        
+
                     <div class="col-6">
-                        <div class="row">
+                        <div class="row justify-content-between">
                             <div class="col-6">
                                 <div class="input-group mb-3">                
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            statusnum: <input id="statusNum" type="checkbox">
+                                            type: <input id="type" type="checkbox">
                                         </div>
                                     </div>                
-                                    <input id="statusNumCont" type="text" class="form-control">
+                                    <input id="typeCont" type="text" class="form-control">
                                 </div>
                             </div>
-        
+
                             <div class="col-6">
                                 <div class="input-group mb-3">                
                                     <div class="input-group-prepend">
@@ -268,6 +268,32 @@
                                         </div>
                                     </div>                
                                     <input id="subTypeNumCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            status: <input id="status" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="statusCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            statusnum: <input id="statusNum" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="statusNumCont" type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -305,10 +331,94 @@
                                 <div class="input-group mb-3">                
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
+                                            bannerspec: <input id="bannerspec" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="bannerspecCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            expid: <input id="expid" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="expidCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            httpparams: <input id="httpparams" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="httpparamsCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">        
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            usergroup: <input id="usergroup" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="usergroupCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-6">                
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
                                             referer: <input id="referer" type="checkbox" checked>
                                         </div>
                                     </div>                
                                     <input id="refererCont" type="text" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            backref: <input id="backref" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <input id="backrefCont" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">                
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">                
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            devicetype: <input id="devicetype" type="checkbox">
+                                        </div>
+                                    </div>                
+                                    <select id="devicetypeCont" class="form-control">
+                                        <option></option>
+                                        <option>0 - tv</option>
+                                        <option>1 - tablets</option>
+                                        <option>2 - smartphones</option>
+                                        <option>3 - desktop</option>                                                              
+                                    </select>
                                 </div>
                             </div>
         

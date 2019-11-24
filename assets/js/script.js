@@ -28,6 +28,22 @@ let dateFrom = document.getElementById('dateFrom'),
     bannerCont = document.getElementById('bannerCont'),
     bannerValue,
 
+    bannerspec = document.getElementById('bannerspec'),
+    bannerspecCont = document.getElementById('bannerspecCont'),
+    bannerspecValue,
+
+    expid = document.getElementById('expid'),
+    expidCont = document.getElementById('expidCont'),
+    expidValue,
+
+    httpparams = document.getElementById('httpparams'),
+    httpparamsCont = document.getElementById('httpparamsCont'),
+    httpparamsValue,
+
+    usergroup = document.getElementById('usergroup'),
+    usergroupCont = document.getElementById('usergroupCont'),
+    usergroupValue,
+
     bannerNum = document.getElementById('bannerNum'),
     bannerNumCont = document.getElementById('bannerNumCont'),
     bannerNumValue,
@@ -40,9 +56,17 @@ let dateFrom = document.getElementById('dateFrom'),
     typeNumCont = document.getElementById('typeNumCont'),
     typeNumValue,
 
+    type = document.getElementById('type'),
+    typeCont = document.getElementById('typeCont'),
+    typeValue,
+
     subTypeNum = document.getElementById('subTypeNum'),
     subTypeNumCont = document.getElementById('subTypeNumCont'),
     subTypeNumValue,
+
+    status = document.getElementById('status'),
+    statusCont = document.getElementById('statusCont'),
+    statusValue,
 
     statusNum = document.getElementById('statusNum'),
     statusNumCont = document.getElementById('statusNumCont'),
@@ -67,6 +91,14 @@ let dateFrom = document.getElementById('dateFrom'),
     referer = document.getElementById('referer'),
     refererCont = document.getElementById('refererCont'),
     refererValue,
+
+    backref = document.getElementById('backref'),
+    backrefCont = document.getElementById('backrefCont'),
+    backrefValue,
+
+    devicetype = document.getElementById('devicetype'),
+    devicetypeCont = document.getElementById('devicetypeCont'),
+    devicetypeValue,
 
     custom = document.getElementById('custom'),
     customCont = document.getElementById('customCont'),
@@ -319,6 +351,14 @@ getCommand.onclick = () => {
     bannerTypeValue = '';
   }
 
+  if (bannerspec.checked == true && bannerspecCont.value != '') {
+    bannerspecValue = `,bannerspec=${bannerspecCont.value}`;
+  } else if (bannerspec.checked == true) {
+    bannerspecValue = ',bannerspec';
+  } else {
+    bannerspecValue = '';
+  }
+
   if (typeNum.checked == true && typeNumCont.value != '') {
     typeNumValue = `,typenum=${typeNumCont.value[0]}`;
   } else if (typeNum.checked == true) {
@@ -331,6 +371,14 @@ getCommand.onclick = () => {
     subTypeNum.setAttribute('checked', '');
   }
 
+  if (type.checked == true && typeCont.value != '') {
+    typeValue = `,type=${typeCont.value}`;
+  } else if (type.checked == true) {
+    typeValue = ',type';
+  } else {
+    typeValue = '';
+  }
+
   if (subTypeNum.checked == true && subTypeNumCont.value != '') {
     subTypeNumValue = `,subtypenum=${subTypeNumCont.value}`;
   } else if (subTypeNum.checked == true) {
@@ -339,12 +387,44 @@ getCommand.onclick = () => {
     subTypeNumValue = '';
   }
 
+  if (status.checked == true && statusCont.value != '') {
+    statusValue = `,status=${statusCont.value}`;
+  } else if (status.checked == true) {
+    statusValue = ',status';
+  } else {
+    statusValue = '';
+  }
+
   if (statusNum.checked == true && statusNumCont.value != '') {
     statusNumValue = `,statusnum=${statusNumCont.value}`;
   } else if (statusNum.checked == true) {
     statusNumValue = ',statusnum';
   } else {
     statusNumValue = '';
+  }
+
+  if (expid.checked == true && expidCont.value != '') {
+    expidValue = `,expid=${expidCont.value}`;
+  } else if (expid.checked == true) {
+    expidValue = ',expid';
+  } else {
+    expidValue = '';
+  }
+
+  if (httpparams.checked == true && httpparamsCont.value != '') {
+    httpparamsValue = `,httpparams=${httpparamsCont.value}`;
+  } else if (httpparams.checked == true) {
+    httpparamsValue = ',httpparams';
+  } else {
+    httpparamsValue = '';
+  }
+
+  if (usergroup.checked == true && usergroupCont.value != '') {
+    usergroupValue = `,usergroup=${usergroupCont.value}`;
+  } else if (usergroup.checked == true) {
+    usergroupValue = ',usergroup';
+  } else {
+    usergroupValue = '';
   }
 
   if (userId.checked == true && userIdCont.value != '') {
@@ -385,6 +465,22 @@ getCommand.onclick = () => {
     refererValue = ',referer';
   } else {
     refererValue = '';
+  }
+
+  if (backref.checked == true && backrefCont.value != '') {
+    backrefValue = `,backref=${backrefCont.value}`;
+  } else if (backref.checked == true) {
+    backrefValue = ',backref';
+  } else {
+    backrefValue = '';
+  }
+
+  if (devicetype.checked == true && devicetypeCont.value != '') {
+    devicetypeValue = `,devicetype=${devicetypeCont.value[0]}`;
+  } else if (devicetype.checked == true) {
+    devicetypeValue = ',devicetype';
+  } else {
+    devicetypeValue = '';
   }
 
   if (custom.checked == true && customCont.value != '') {
@@ -430,7 +526,7 @@ getCommand.onclick = () => {
   }
 
   if (dateFrom.value != '' && dateTo.value != '') {
-    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${typeNumValue}${subTypeNumValue}${statusNumValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${customValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
+    result.value = `history_log -P ${dateTimeRange} "${dateTimeValue}${siteIdValue}${adValue}${profileValue}${bannerValue}${bannerNumValue}${bannerTypeValue}${bannerspecValue}${typeNumValue}${typeValue}${subTypeNumValue}${statusValue}${statusNumValue}${expidValue}${httpparamsValue}${userIdValue}${sliceValue}${userIpValue}${agentValue}${refererValue}${backrefValue}${customValue}${devicetypeValue}${usergroupValue}"${byDefaultValue}${toFileValue}${toArchiveValue}`;
   }
 
 }
