@@ -248,8 +248,8 @@ clearCommand.onclick = () => {
 }
 
 getCommand.onclick = () => {
-  let d = new Date(),
-      current_date = d.getDate(),
+  let d = new Date(),      
+      current_date = d.getDate() < 10 ? '0' + d.getDate() : d.getDate(),
       current_month = d.getMonth() + 1,
       current_year = d.getFullYear(),
 
